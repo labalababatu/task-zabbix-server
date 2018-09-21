@@ -1,0 +1,30 @@
+  # Task para a instalação do MySQL e pacotes
+  - name: Instalar MySQL
+    yum:
+      name: mariadb-server
+      state: present
+
+  # Task para iniciar o serviço do MySQL
+  - name: Iniciar o serviço do MySQL
+    service:
+      name: mariadb
+      state: started
+
+  # Task para instalar o módulo python para suporte mysql
+  - name: Instalar o python para suporte das bibliotecas do MySQL
+    yum: pkg=MySQL-python state=latest
+
+  # Task criar usuário no banco de dados
+  - name: Criar um usuário no banco de dados
+    mysql_db:
+      name: zabbixdb
+      state: present
+      collation: utf8_unicode_ci
+      encoding: utf8
+      
+  # Task criar usuário e senha zabbix server
+  - mysql_user:
+      name: root
+      password: ""
+      priv: '*.*:ALL'
+      state: present
