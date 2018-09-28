@@ -1,16 +1,16 @@
+# Task para atualizar o sistema
 
-# Task para atualizar a maquina
-    - name: Atualizar a maquina
-      command: yum update -y && yum upgrade -y
+    - name: yum update
+      action: yum name=* state=latest
 
-#Task para realizar a instalação do httpd
+# Task para realizar a instalação do httpd
     - name: Instalação do httpd
       yum:
         name: httpd
         state: latest
-        
+
 # Task iniciar o serviço do httpd
-    - name: Inicar o serviço do httpd
+    - name: Iniciar o serviço do httpd
       service:
         name: httpd
         state: started

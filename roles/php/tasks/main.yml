@@ -1,13 +1,14 @@
-# Task para instalar os pacotes php
-  - name: Instalar as dependencias do php
-    yum: name={{item}} state=present
-    with_items:
-      - php
-      - php-cli
-      - php-common
-      - php-devel
-      - php-pear
-      - php-gd
-      - php-mbstring
-      - php-mysql
-      - php-xml
+# Task para instalar os pacotes do PHP
+
+     - name: Instalar os pacotes do PHP
+       action: yum pkg={{item}} state=installed
+       with_items:
+         - php
+         - php-cli
+         - php-common
+         - php-devel
+         - php-pear
+         - php-gd
+         - php-mbstring
+         - php-mysql
+         - php-xml

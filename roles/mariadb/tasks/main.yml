@@ -1,0 +1,39 @@
+# Task para a instalação do mariadb e pacotes
+  - name: Instalar mariadb
+    yum:
+      name: mariadb-server
+      state: present
+
+  # Task para iniciar o serviço do mariadb
+  - name: Iniciar o serviço do mariadb
+    service:
+      name: mariadb
+      state: started
+
+  # Task para instalar python para suporte das bibliotecas do mysql
+  - name: Instalar o python para suporte das bibliotecas do MySQL
+    yum: pkg=MySQL-python state=latest
+
+  # Task para iniciar o MySQL e habilitar o reboot
+  - name: Iniciar o MySQL e habilitar o reboot
+    service: name=mariadb state=started enabled=true
+
+  # Task para criação do banco de dados mysql
+  - name: Criar novo banco de dados mysql com o nome zabbixdb
+    mysql_db:
+      name: zabbixdb
+      state: present
+
+  # Task criar usuário no banco de dados mysql
+  - mysql_user:
+     name: zabbixuser
+     password: elfos123
+     priv: '*.*:ALL'
+     state: present
+
+  # Restart do mariadb
+  - name: restart mysql
+    service:
+      name: mariadb
+      enabled: yes
+      state: restarted

@@ -1,12 +1,11 @@
 #Projeto Rivendel Criação e Instalação do Zabbix Server com Ansible
 
-- name: Rivendel Tecnologia Projeto Ansible + Vagrant Instalação do Zabbix Server
-  hosts: all
-  user: vagrant
-  become: yes
+- name: Rivendel Tecnologia Projeto Ansible + Instalação do Zabbix Server
+  hosts: ec2
+  become: true
 
   roles:
     - apache
-    - mysql
     - php
+    - mariadb
     - zabbix
