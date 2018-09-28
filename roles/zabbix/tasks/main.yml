@@ -8,6 +8,7 @@
      - name: yum update
        action: yum name=* state=latest
 
+# Instalar o Zabbix Server
      - name: Instalar Zabbix Server
        action: yum pkg={{item}} state=installed
        with_items:
@@ -52,38 +53,3 @@
 #       service:
 #         name: zabbix-agent
 #         state: started
-
-
-
-
-
-
-# ---------------------------------Resto de código-----------------------------------
-
-
-# Task atualizar o repositório
-#     - name: yum update
-#       action: yum name=* state=latest
-#
-# Task para atualizar os pacotes
-#     - name: upgrade all packages
-#       yum:
-#         name: '*'
-#         state: latest
-
-#    - name: Instalar o Zabbix Server
-#      action: yum pkg={{item}} state=installed
-#      with_items:
-#          - zabbix-server-mysql
-#          - zabbix-web-mysql
-#          - zabbix-agent
-#          - zabbix-get
-#          - zabbix-sender
-#          - zabbix-java-gateway
-
-
-#    - name: upgrade all packages
-#      yum:
-#         name: '*'
-#         state: latest
-#
