@@ -27,7 +27,7 @@
   # Task criar usuário no banco de dados mysql
   - mysql_user:
      name: zabbixuser
-     password: elfos123
+     password: 
      priv: '*.*:ALL'
      state: present
 
